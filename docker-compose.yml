@@ -1,0 +1,74 @@
+version: "3.8"
+
+services:
+  raft-server-1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: raft-server-1
+    environment:
+      - SERVER_ID=1
+    ports:
+      - "5001:5001"
+    networks:
+      - raft-network
+
+  raft-server-2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: raft-server-2
+    environment:
+      - SERVER_ID=2
+    ports:
+      - "5002:5002"
+    networks:
+      - raft-network
+
+  raft-server-3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: raft-server-3
+    environment:
+      - SERVER_ID=3
+    ports:
+      - "5003:5003"
+    networks:
+      - raft-network
+
+  raft-server-4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: raft-server-4
+    environment:
+      - SERVER_ID=4
+    ports:
+      - "5004:5004"
+    networks:
+      - raft-network
+  raft-server-5:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: raft-server-5
+    environment:
+      - SERVER_ID=5
+    ports:
+      - "5005:5005"
+    networks:
+      - raft-network
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    container_name: raft-tests
+    networks:
+      - raft-network
+
+
+networks:
+  raft-network:
+    driver: bridge
