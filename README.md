@@ -1,4 +1,4 @@
-# Raf
+# dz2
 
 You simulate a database with replicas. The client sends data to the master server, from the master the data is replicated to other nodes. Reading is distributed evenly across all replicas (i.e. the client's read request is served not by the master, but by some replica). If the master is lost, the replicas must vote and choose a new master among the living nodes using the consensus protocol (Raft).
 
